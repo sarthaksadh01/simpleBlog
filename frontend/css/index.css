@@ -3,6 +3,9 @@ body {
     background: linear-gradient(to right, rgb(129, 113, 237), rgb(200, 113, 235) 150%);
     box-sizing: border-box;
   }
+  .navbar{
+    background: linear-gradient(to right, rgb(129, 113, 237), rgb(200, 113, 235) 150%);
+  }
   
   .blog-container {
     background: #fff;
@@ -189,4 +192,6 @@ body {
   .icon-bubble:hover {
     fill: #ff4d4d;
   }
+
+  
   
