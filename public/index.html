@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="google-signin-client_id" content="797348645804-g3ktnq80vig9lt1n043dectihkt8qfif.apps.googleusercontent.com">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+</head>
+
+
+
+<body ng-app="myApp" ng-controller="myCtrl">
+        <nav class="fixed-top shadow navbar text-dark navbar-expand-md bg-white">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+                    <i class="fas fa-ellipsis-v"></i>
+            
+                </button>
+            
+                <div class="navbar-collapse collapse dual-nav order-1 order-md-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <img style="height:35px;" src="data:image/png;base64,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">
+                        </li>
+                    </ul>
+                </div>
+            
+            
+                <a style="color:rgb(129, 113, 237); font-size:30px;" href="/" class=" navbar-brand mx-auto order-0 order-md-2 p-2">S-blog</a>
+            
+            
+            
+                <div class="navbar-collapse collapse dual-nav order-4 order-md-4 justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="mr-3 mt-2 nav-item">
+                            <!-- <i style="font-size: 20px;" class="fas fa-search"></i> -->
+                            <!-- <form id="demo-2">
+                                            <input type="search" placeholder="Search">
+                                        </form> -->
+                            <form>
+                                <input type="search" placeholder="Search">
+                            </form>
+                        </li>
+                        <li class=" nav-item">
+                            <!-- <button style="background:rgb(129, 113, 237)" class="mt-2 text-white btn btn" data-onsuccess="onSignIn">Login</button> -->
+                            <!-- <div  style="background:rgb(129, 113, 237)" class="mt-2 btn g-signin2" data-onsuccess="onSignIn"></div> -->
+                            <div ng-controller="GoogleCtrl">
+                                <div class="mt-2 g-signin2" data-onsuccess="onSignIn"></div>
+                            </div>
+                            <!-- <i class="fas fa-sign-in-alt"></i> -->
+                        </li>
+            
+                    </ul>
+                </div>
+            
+            </nav>
+            <br><br>
+    <!-- <div ng-include="'../static/navbar.html'"></div> -->
+    <div ng-view></div>
+    <div ng-include="'../static/footer.html'"></div>
+
+
+
+
+
+
+    
+
+    <script>var app = angular.module('myApp', ["ngRoute"]);</script>
+    <script src="./js/blogsload.js"></script>
+    <script src="./js/routes.js"></script>
+    <script src="./js/detailpage.js"></script>
+    <script src="./js/signin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

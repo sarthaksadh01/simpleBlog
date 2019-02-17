@@ -1,0 +1,84 @@
+
+<style>
+    .parallax{
+        background-image:url({{post.photo}}) 
+    }
+</style>
+<div class="mt-0 center text-center parallax" >
+    <link rel="stylesheet" href="../css/postView.css">
+
+
+
+    <div class="bg-text">
+
+        <h1 style="font-size:50px">{{post.title}}</h1>
+
+    </div>
+</div>
+
+<div class="container" style="padding:20px;">
+
+    <div class="row row-margin-bottom">
+
+        <p>{{post.full_text}}</p>
+
+
+
+
+    </div>
+
+    <html>
+
+    <head>
+        <br><br>
+        <h3 class="heading">Add A Comment Below</h3>
+
+    <body>
+        <div class="text-right container2">
+            <form>
+                <div class="form-group">
+                    <textarea ng-model="commenttext" class="form-control status-box" rows="8" placeholder="Enter your comment here...">{{post.full_text}}</textarea>
+                    <!-- <h1>You entered: {{commenttext}}</h1> -->
+                </div>
+            </form>
+            <div class="button-group pull-right">
+                <p class="counter">{{250-commenttext.length}}</p>
+                <button ng-click="postComment()" class="btn btn-primary">Post</button>
+            </div>
+            <ul class="posts">
+            </ul>
+        </div>
+        <br>
+
+        <div class="comment" ng-repeat="x in comments | orderBy : '-date'">
+            <!-- Comment Avatar -->
+            <div class="comment-avatar">
+                <img ng-src="{{x.user_photo}}">
+            </div>
+ 
+            <!-- Comment Box -->
+            <div class="comment-box">
+                <div  class="comment-text">{{x.text}}</div>
+                <div class="comment-footer">
+                    <div class="comment-info">
+                        <span class="comment-author">
+                            <a href="mailto:sexar@pagelab.io">{{x.user_name}}</a>
+                        </span>
+                        <span class="comment-date">{{x.date|date}}</span>
+                    </div>
+
+                    <div class="comment-actions">
+                        <a href="#">Reply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+
+
+
+        <hr>
+
+        <!-- Footer -->
