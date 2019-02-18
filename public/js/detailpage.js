@@ -2,7 +2,7 @@ app.controller('postController', function ($scope, $routeParams, $http) {
     $http.get("/api/singlepost/" + $routeParams.id + "")
         .then(function (response) {
             $scope.post = response.data;
-            $scope.decodedHtml=decodeHtmlEntity(response.post.full_text);
+            $scope.decodedHtml=decodeHtmlEntity(response.data.full_text);
         });
 
     $http.get("/api/comments/" + $routeParams.id + "")
