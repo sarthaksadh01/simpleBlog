@@ -94,14 +94,13 @@
             var photo = $('#pic').val();
            
 
-            var encodedHtml =encodeHtmlEntity(markupStr);
+        
 
           
             console.log(markupStr);
             console.log(title);
             console.log(summary);
             console.log(by);
-            // $('#summernote').summernote('code', xyz);
             $.ajax({
                 type: "POST",
                 url: "/api/savepost",
@@ -109,7 +108,7 @@
                     title: title,
                     summary: summary,
                     by: by,
-                    full_text: encodedHtml,
+                    full_text: markupStr,
                     photo: photo
                 },
                 success: function (msg) {
@@ -118,13 +117,6 @@
                 }
             });
         }
-        var encodeHtmlEntity = function (str) {
-                var buf = [];
-                for (var i = str.length - 1; i >= 0; i--) {
-                    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
-                }
-                return buf.join('');
-            };
     </script>
 
 
