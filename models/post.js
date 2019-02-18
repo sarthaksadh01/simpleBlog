@@ -5,6 +5,7 @@ var posts = new Schema({
     summary: String,
     full_text:   String,
     photo: String,
-    date:Date,   
+    date:Date, 
+    by:String  
   });
   module.exports = mongoose.model('Posts', posts)

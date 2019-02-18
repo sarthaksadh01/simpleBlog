@@ -3,6 +3,7 @@ var app = express();
 var session = require('express-session');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+const path = require('path');
 
 // mongoose.connect('mongodb://localhost:27017/blog', { useNewUrlParser: true });
 var port = process.env.PORT || 3000;
@@ -16,7 +17,7 @@ mongoose.connection.on("error", function(err) {
 
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
-app.use(express.static(__dirname + '/public'));
+ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -65,7 +66,18 @@ _pin.save((err)=>{
 
 });
 
+
+
 app.get('/', (req, res, next) => {
+    res.send("admin.html");
+});
+
+app.get('/admin', function (req, res) {
+    res.sendFile(path.join(__dirname+ '/public/admin.html'));
+});
+
+
+app.get('/api', (req, res, next) => {
     res.send("index.html");
 });
 
@@ -109,6 +121,26 @@ app.get('/api/comments/:post_id', function (req, res) {
 
 
     });
+});
+app.post('/api/savepost/', function (req, res) {
+ var datetime = new Date();
+  var _post = new Posts({
+    "title" :  req.body.title,
+    "summary" : req.body.summary ,
+    "full_text" :  req.body.full_text,
+    "photo" : req.body.photo,
+    "date" : datetime,
+}) ;
+_post.save((err)=>{
+
+    if(err){
+        res.send(`error: ${err}`);
+    }
+    else{
+        res.send(`post ${req.body.title} saved`);
+    }
+
+});
 });
 app.post('/api/signin', function (req, res) {
     //console.log(req.session.email);
@@ -203,12 +235,8 @@ app.post('/api/postcomment', function (req, res) {
 
     }
 
-
-
-
-
-
-
 });
+
+
 //console.log('app running on port 3000');
 app.listen(port);
