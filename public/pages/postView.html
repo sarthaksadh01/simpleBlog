@@ -37,7 +37,7 @@
     </form>
     <div class="button-group pull-right">
         <p class="counter">{{250-commenttext.length}}</p>
-        <button ng-click="postComment()" class="btn btn-primary">Post</button>
+        <button ng-if="sbmt" ng-click="postComment()" class="btn btn-primary">Post</button>
     </div>
     <ul class="posts">
     </ul>

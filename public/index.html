@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-sanitize.js"></script>
+   
 
 
 </head>
@@ -67,7 +68,9 @@
             </nav>
             <br><br>
     <!-- <div ng-include="'../static/navbar.html'"></div> -->
-    <div ng-view></div>
+    <placeholder-shimmer>
+    <div ng-if="data" ng-view></div>
+    </placeholder-shimmer>
     <div ng-include="'../static/footer.html'"></div>
 
 
