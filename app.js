@@ -29,43 +29,6 @@ var Posts = require('./models/post');
 var PinPost = require('./models/pinpost');
 var Carousel = require('./models/carousel');
 var Comments = require('./models/comments');
-var datetime = new Date();
-// var _post = new Posts({
-//     "title" : "sarthak",
-//     "summary" : "The $http service requests a page on the server, and the response is set as the value of the  variable.",
-//     "full_text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-//     "photo" : "https://picsum.photos/1200/600/?image=1083",
-//     "date" : datetime,
-//     "__v" : 0
-// }) ;
-//  _post.save((err)=>{
-
-//     if(err){
-//         console.log(err);
-
-//     }
-//     else console.log("saved");
-//  });
-
-// var _carousel = new Carousel({
-//     "title" : "title 3",
-//     "full_text" : "blaaa",
-//     "photo" : "https://picsum.photos/1200/600/?image-1039"
-// });
-// _carousel.save((err)=>{
-
-// });
-
-var _pin = new PinPost({
-    "title" : "Daily Capsule",
-    "summary" : "click below to read our daily tech news!",
-    "full_text" : "bla bla",
-    "photo" : "https://imagecdn.acast.com/dth/image.jpg?w=800&h=800",
-});
-_pin.save((err)=>{
-
-});
-
 
 
 app.get('/', (req, res, next) => {
