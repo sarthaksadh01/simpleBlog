@@ -2,6 +2,7 @@ app.controller('postController', function ($scope, $routeParams, $http) {
     $http.get("/api/singlepost/" + $routeParams.id + "")
         .then(function (response) {
             $scope.post = response.data;
+            $scope.decodedHtml=decodeHtmlEntity(response.post.full_text);
         });
 
     $http.get("/api/comments/" + $routeParams.id + "")
@@ -38,6 +39,12 @@ app.controller('postController', function ($scope, $routeParams, $http) {
                 });
 
     };
+
+     var decodeHtmlEntity = function (str) {
+                return str.replace(/&#(\d+);/g, function (match, dec) {
+                    return String.fromCharCode(dec);
+                });
+            };
 
     
 
