@@ -8,16 +8,16 @@ const path = require('path');
 // mongoose.connect('mongodb://localhost:27017/blog', { useNewUrlParser: true });
 var port = process.env.PORT || 3000;
 mongoose.connect('mongodb://sadh:sarthak01@ds237574.mlab.com:37574/stodos', { useNewUrlParser: true });
-mongoose.connection.on("error", function(err) {
+mongoose.connection.on("error", function (err) {
     console.log("Could not connect to mongo server!");
     return console.log(err);
-  });
-  
-  
+});
+
+
 
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
- app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,7 +36,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/admin', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/public/admin.html'));
+    res.sendFile(path.join(__dirname + '/public/admin.html'));
 });
 
 
@@ -67,7 +67,7 @@ app.get('/api/carousel', (req, res, next) => {
 
 app.get('/api/singlepost/:id', function (req, res) {
     var id = req.params.id;
-   // console.log(id);
+    // console.log(id);
     Posts.findOne({ _id: id }, (err, post) => {
         res.send(post);
         // console.log(post);
@@ -86,24 +86,31 @@ app.get('/api/comments/:post_id', function (req, res) {
     });
 });
 app.post('/api/savepost/', function (req, res) {
- var datetime = new Date();
-  var _post = new Posts({
-    "title" :  req.body.title,
-    "summary" : req.body.summary ,
-    "full_text" :  req.body.full_text,
-    "photo" : req.body.photo,
-    "date" : datetime,
-}) ;
-_post.save((err)=>{
+    if (req.body.password == "SArthak01@") {
 
-    if(err){
-        res.send(`error: ${err}`);
+
+        var datetime = new Date();
+        var _post = new Posts({
+            "title": req.body.title,
+            "summary": req.body.summary,
+            "full_text": req.body.full_text,
+            "photo": req.body.photo,
+            "date": datetime,
+        });
+        _post.save((err) => {
+
+            if (err) {
+                res.send(`error: ${err}`);
+            }
+            else {
+                res.send(`post ${req.body.title} saved`);
+            }
+
+        });
     }
     else{
-        res.send(`post ${req.body.title} saved`);
+        res.send('error: incorrect password!');
     }
-
-});
 });
 app.post('/api/signin', function (req, res) {
     //console.log(req.session.email);
@@ -116,7 +123,7 @@ app.post('/api/signin', function (req, res) {
         Users.find({ email: req.body.email }, (err, user) => {
 
             if (user.length) {
-               // console.log("user already exists!");
+                // console.log("user already exists!");
                 req.session.email = req.body.email;
                 req.session.save()
                 res.json({ msg: req.session.email });
@@ -163,7 +170,7 @@ app.post('/api/postcomment', function (req, res) {
 
 
     if (req.session.email) {
-       // console.log(`loged in user is ${req.session.email}`);
+        // console.log(`loged in user is ${req.session.email}`);
         var datetime = new Date();
         Users.findOne({ email: req.session.email }, (err, user) => {
 

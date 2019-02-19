@@ -10,14 +10,14 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active ">
-                        <img class="d-block w-100" ng-src="{{carousel[0].photo}}" alt="First slide">
+                        <img class="d-block w-100" ng-src="{{carousel[0].photo}}" alt="Webd">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{carousel[0].title}} </h5>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p> -->
                         </div>
                     </div>
                     <div class="carousel-item" ng-repeat="slides in carousel.slice(1,carousel.length)">
-                        <img class="d-block w-100" ng-src="{{slides.photo}}" alt="First slide">
+                        <img class="d-block w-100" ng-src="{{slides.photo}}" alt="flutter">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{slides.title}}</h5>
                             <!-- <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p> -->
@@ -44,7 +44,7 @@
                         <p class="card-text">{{daily[0].summary}}</p>
                     </div>
                     <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="#!/post/{{daily[0].title}}" class="btn btn-outline-primary">Read More</a>
+                        
                     </div>
                 </div>
                 <!-- Copy until here -->
@@ -54,7 +54,7 @@
 
 
             <div class="row pt-5 m-auto">
-                <div class="col-md-6 col-lg-4 pb-3" ng-repeat="blogs in myWelcome | orderBy : '-date'">
+                <div class="col-md-6 col-lg-4 pb-3" ng-repeat="blogs in myWelcome | orderBy : 'date'">
 
                     <!-- Add a style="height: XYZpx" to div.card to limit the card height and display scrollbar instead -->
                     <div class="shadow-lg card card-custom bg-white border-white border-0" style="height: 450px">
@@ -67,6 +67,7 @@
                             <h4 class="card-title">{{blogs.title}}</h4>
                             <p class="card-text">{{blogs.summary}}</p>
                         </div>
+                        
                         <hr class="mr-3 ml-3" style="height:2px;border:none;color:#333;background-color:#333;" />
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                             <!-- <a href="#" class="btn btn-primary">Option</a> -->
@@ -74,7 +75,9 @@
                             <a style="float: right;"  href="#!/post/{{blogs._id}}" class="btn btn-outline-primary">Read More</a>
                             <p style="float:left" class="text-muted">{{blogs.date |date }}</p>
                             <i style="float: right; font-size:20px;" class="mt-2 mr-3 fas fa-share-alt"></i>
+                            
                         </div>
+                       
                     </div>
 
                 </div>
