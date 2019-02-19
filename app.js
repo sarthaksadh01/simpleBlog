@@ -18,8 +18,8 @@ mongoose.connection.on("error", function (err) {
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
 
 
